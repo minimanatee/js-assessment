@@ -18,6 +18,19 @@ recursionAnswers = {
    */
   listFiles: function listFiles(data, dirName) {
 
+	var list = data.files;
+	
+	for (let i = 0;  i < data.subDirs.length; i++) 
+		{
+		if (dirName != undefined && data.subDirs[i].dirName === dirName) {
+		list = listFiles(data.subDirs[i]);
+		break;
+		}
+		else {
+		list = list.concat(listFiles(data.subDirs[i]));	
+		}		
+	}	
+	return list;
   },
 
   /**
@@ -25,11 +38,16 @@ recursionAnswers = {
    * https://en.wikipedia.org/wiki/Fibonacci_number
    * 
    * The first few fibonacci numbers are: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+										  1, 2, 3, 4, 5, 6,  7,   8, 9, 10, 11
    * 
    * @param {Number} n - the index of the fibonacci number desired
    * @returns {Number} The nth fibonacci number
    */
   fibonacci: function fibonacci(n) {
 
+	if ( n <= 1) {
+	return n};
+	
+	return fibonacci(n - 2) + fibonacci(n - 1 ); 
   },
 };

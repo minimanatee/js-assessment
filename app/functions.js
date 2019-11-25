@@ -10,6 +10,11 @@ functionsAnswers = {
    * @returns Whatever fn would return
    */
   argsAsArray: function argsAsArray(fn, arr) {
+	
+		var fun = fn(...arr);
+		return fun;
+		
+				
 
   },
 
@@ -27,6 +32,11 @@ functionsAnswers = {
    * that begins with str + ', ' + that 1 argument.
    */
   functionFunction: function functionFunction(str) {
-
+		
+        function hello(x) {
+				return str.concat(", " + x);
+		  }
+		return hello;  
+		
   },
 };
